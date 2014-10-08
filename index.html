@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <title>Körningskalkylator</title>
+  </head>
+  <body>
+    <div id="carcalc-container"></div>
+    <script type="text/template" id="carcalc-input-template">
+      <div id="carcalc-input-container">
+        <label for="hours">Timmar
+          <input type="number" min="0" max="23.5" step="0.5" id="carcalc-input-hours" value="<%= hours %>"/>
+        </label>
+        <label for="days">Dagar
+          <input type="number" min="0" max="14" step="1" id="carcalc-input-days" value="<%= days %>" />
+        </label>
+        <label for="distance">Kilometer
+          <input type="number" min="0" max="10000" step="1" id="carcalc-input-distance" value="<%= distance %>" />
+        </label>
+        <input type="submit" id="calculate" value="Räkna ut" />
+      </div>
+    </script>
+    <script type="text/template" id="carcalc-output-rate-table-header">
+      <thead>
+        <tr>
+          <td></td>
+          <td>Timtaxa</td>
+          <td>Dygnstaxa</td>
+          <td>Kilometertaxa</td>
+          <td>Pris för resan</td>
+        </tr>
+      </thead>
+    </script>
+    <script type="text/template" id="carcalc-output-rate-row-template">
+      <tr>
+        <td><%= title %> <br /><%= description %></td>
+        <td><%= hourly %></td>
+        <td><%= daily %></td>
+        <td><%= kilometer %></td>
+        <td><%= cost %></td>
+      </tr>
+    </script>
+    <script type="text/javascript" src="vendor/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript" src="vendor/underscore.js"></script>
+    <script type="text/javascript" src="vendor/backbone.js"></script>
+    <script type="text/javascript" src="src/init.js"></script>
+    <script type="text/javascript" src="src/models.js"></script>
+    <script type="text/javascript" src="src/collections.js"></script>
+    <script type="text/javascript" src="src/views.js"></script>
+    <script type="text/javascript" src="src/main.js"></script>
+  </body>
+</html>
