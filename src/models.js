@@ -4,22 +4,34 @@ CarCalc.Models.Rate = Backbone.Model.extend({
   bookingFee: CarCalc.Data.bookingFee,
 
   calculateCost : function(trip, options) {
-    var timeCost = 0;
-    var distanceCost = trip.get("distance") * this.get("kilometer");
-
-    var combinedTimeRate = trip.get("days") + (trip.get("hours") / 24);
-
-    if (combinedTimeRate >= 1) {
-      timeCost = this.get("daily") * combinedTimeRate;
-    } else {
-      timeCost = this.get("hourly") * trip.get("hours");
-    }
+    var timeCost = this.calculateTimeCost(trip);
+    var distanceCost = this.calculateDistanceCost(trip);
 
     if (options.addVAT) {
       return this.withVAT(distanceCost + timeCost + this.bookingFee);
     } else {
       return (distanceCost + timeCost + this.bookingFee);
     }
+  },
+
+  calculateTimeCost: function(trip){
+    var timeCost = 0;
+    var combinedTime = trip.get("days") + (trip.get("hours") / 24);
+
+    if (combinedTime >= 1) {
+      timeCost = this.get("daily") * combinedTime;
+    } else {
+      timeCost = this.get("hourly") * trip.get("hours");
+      if (timeCost > this.get("daily")) {
+        timeCost = this.get("daily");
+      }
+    }
+    return timeCost;
+  },
+
+  calculateDistanceCost: function(trip){
+    var distanceCost = trip.get("distance") * this.get("kilometer");
+    return distanceCost;
   },
 
   getInfoAndCost: function(trip, options){
