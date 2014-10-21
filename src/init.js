@@ -59,6 +59,8 @@
     }
   ];
 
+  CarCalc.Data.bookingFee = 24.0;
+
   CarCalc.Util.hasKey = function(obj, ary){
     return (_.find(_.keys(obj),
         function(key){

@@ -1,7 +1,7 @@
 CarCalc.Models.Rate = Backbone.Model.extend({
   monetaryValues: ["hourly", "daily", "kilometer", "cost"],
 
-  bookingFee: 24,
+  bookingFee: CarCalc.Data.bookingFee,
 
   calculateCost : function(trip, options) {
     var timeCost = 0;
