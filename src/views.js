@@ -3,7 +3,7 @@ CarCalc.Views.TripView = Backbone.View.extend({
 
   id: "carcalc-input-container",
 
-  template: _.template($("#carcalc-input-template").html()),
+  template: _.template(jQuery("#carcalc-input-template").html()),
 
   initialize: function(){
     _.bindAll(this, "render");
@@ -16,9 +16,9 @@ CarCalc.Views.TripView = Backbone.View.extend({
 
   updateTrip: function(){
     var input = {
-      hours: $("#carcalc-input-hours").val(),
-      days: $("#carcalc-input-days").val(),
-      distance: $("#carcalc-input-distance").val()
+      hours: jQuery("#carcalc-input-hours").val(),
+      days: jQuery("#carcalc-input-days").val(),
+      distance: jQuery("#carcalc-input-distance").val()
     };
     this.model.update(input);
     this.render();
@@ -31,7 +31,7 @@ CarCalc.Views.TripView = Backbone.View.extend({
 });
 
 CarCalc.Views.RateView = Backbone.View.extend({
-  template: _.template($("#carcalc-output-rate-row-template").html()),
+  template: _.template(jQuery("#carcalc-output-rate-row-template").html()),
 
   initialize: function(){
     _.bindAll(this, "render");
@@ -50,7 +50,7 @@ CarCalc.Views.RatesView = Backbone.View.extend({
 
   id: "carcalc-output-container",
 
-  tableHeader: _.template($("#carcalc-output-rate-table-header").html()),
+  tableHeader: _.template(jQuery("#carcalc-output-rate-table-header").html()),
 
   initialize: function(){
     var that = this;
@@ -74,7 +74,7 @@ CarCalc.Views.RatesView = Backbone.View.extend({
     this.$el.empty();
     this.$el.append(this.tableHeader());
     _(this._rateViews).each(function(rv){
-      $(that.el).append(rv.render().el);
+      jQuery(that.el).append(rv.render().el);
     });
 
     return this;
@@ -82,7 +82,7 @@ CarCalc.Views.RatesView = Backbone.View.extend({
 });
 
 CarCalc.Views.AppView = Backbone.View.extend({
-  el: $("#carcalc-container"),
+  el: jQuery("#carcalc-container"),
 
   initialize: function(){
     _.bindAll(this, "render");
