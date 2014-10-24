@@ -3,42 +3,53 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
     <title>Körningskalkylator</title>
+    <link rel="stylesheet" href="css/style.css" />
   </head>
   <body>
     <div id="carcalc-container"></div>
     <script type="text/template" id="carcalc-input-template">
-      <div id="carcalc-input-container">
-        <label for="hours">Timmar
-          <input type="number" min="0" max="23.5" step="0.5" id="carcalc-input-hours" value="<%= hours %>"/>
-        </label>
-        <label for="days">Dagar
-          <input type="number" min="0" max="14" step="1" id="carcalc-input-days" value="<%= days %>" />
-        </label>
-        <label for="distance">Kilometer
-          <input type="number" min="0" max="10000" step="1" id="carcalc-input-distance" value="<%= distance %>" />
-        </label>
-        <input type="submit" id="calculate" value="Räkna ut" />
-      </div>
+      <label for="carcalc-input-hours">
+        <input type="number" min="0" max="23.5" step="0.5" id="carcalc-input-hours" value="<%= hours %>"/>
+        Timmar
+      </label>
+      <label for="carcalc-input-days">
+        <input type="number" min="0" max="14" step="1" id="carcalc-input-days" value="<%= days %>" />
+        Dagar
+      </label>
+      <label for="carcalc-input-distance">
+        <input type="number" min="0" max="10000" step="1" id="carcalc-input-distance" value="<%= distance %>" />
+        Kilometer
+      </label>
+      <input type="submit" id="carcalc-calculate" value="Räkna ut" />
     </script>
     <script type="text/template" id="carcalc-output-rate-table-header">
       <thead>
         <tr>
-          <td></td>
-          <td>Timtaxa</td>
-          <td>Dygnstaxa</td>
-          <td>Kilometertaxa</td>
-          <td>Pris för resan</td>
+          <td class="carcalc-table-title"></td>
+          <td class="carcalc-type-muted">1h</td>
+          <td class="carcalc-type-muted">24h</td>
+          <td class="carcalc-type-muted">1km</td>
+          <td class="carcalc-table-total-price">Pris för resan</td>
         </tr>
       </thead>
     </script>
     <script type="text/template" id="carcalc-output-rate-row-template">
       <tr>
-        <td><%= title %> <br /><%= description %></td>
-        <td><%= hourly %></td>
-        <td><%= daily %></td>
-        <td><%= kilometer %></td>
-        <td><%= cost %></td>
+        <td class="carcalc-table-title"><span class="carcalc-type-title"><%= title %></span> <br /><%= description %></td>
+        <td class="carcalc-type-muted"><%= hourly %></td>
+        <td class="carcalc-type-muted"><%= daily %></td>
+        <td class="carcalc-type-muted"><%= kilometer %></td>
+        <td class="carcalc-table-total-price"><%= cost %></td>
       </tr>
+    </script>
+    <script type="text/template" id="carcalc-output-rate-table-footer">
+      <tfoot>
+        <tr>
+          <td class="carcalc-type-muted" colspan="5">
+            I priset ingår bokningsavgift, drivmedel, självriskreducerin, trängselskatt och moms. Inga andra avgifter tillkommer.
+          </td>
+        </tr>
+      </tfoot>
     </script>
     <script type="text/javascript" src="vendor/jquery-1.11.1.min.js"></script>
     <script type="text/javascript" src="vendor/underscore-min.js"></script>
