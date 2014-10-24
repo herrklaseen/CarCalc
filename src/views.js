@@ -52,6 +52,8 @@ CarCalc.Views.RatesView = Backbone.View.extend({
 
   tableHeader: _.template(jQuery("#carcalc-output-rate-table-header").html()),
 
+  tableFooter: _.template(jQuery("#carcalc-output-rate-table-footer").html()),
+
   initialize: function(){
     var that = this;
     this._rateViews = [];
@@ -76,6 +78,7 @@ CarCalc.Views.RatesView = Backbone.View.extend({
     _(this._rateViews).each(function(rv){
       jQuery(that.el).append(rv.render().el);
     });
+    this.$el.append(this.tableFooter());
 
     return this;
   }
