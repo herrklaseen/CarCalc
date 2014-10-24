@@ -17,21 +17,21 @@
   CarCalc.Data.rates = [
     {
       title: "Klass 1",
-      description: "Liten bil, t ex VW Up!.",
+      description: "Liten bil, t ex VW Up!",
       hourly: 15.20,
       daily: 182.40,
       kilometer: 2.16
     },
     {
       title: "Klass 2",
-      description: "Något större bil, t ex Toyota Yaris.",
+      description: "Något större bil, t ex Toyota Yaris",
       hourly: 16,
       daily: 192,
       kilometer: 2.24
     },
     {
       title: "Klass 3",
-      description: "Stor bil, t ex Skoda Octavia.",
+      description: "Stor bil, t ex Skoda Octavia",
       hourly: 16.80,
       daily: 201.60,
       kilometer: 2.40
