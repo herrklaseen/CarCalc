@@ -21,7 +21,7 @@ CarCalc.Models.Rate = Backbone.Model.extend({
     if (combinedTime >= 1) {
       timeCost = this.get("daily") * combinedTime;
     } else {
-      timeCost = this.get("hourly") * trip.get("hours");
+      timeCost = this.get("hourly") * (combinedTime * 24);
       if (timeCost > this.get("daily")) {
         timeCost = this.get("daily");
       }
@@ -51,7 +51,7 @@ CarCalc.Models.Rate = Backbone.Model.extend({
 
 CarCalc.Models.Trip = Backbone.Model.extend({
   defaults: {
-    hours: 0.5,
+    hours: 0,
     days: 0,
     distance: 0
   },
@@ -61,8 +61,8 @@ CarCalc.Models.Trip = Backbone.Model.extend({
       hours: function(input){
         if (input < 0) {
           input = 0;
-        } else if (input > 23.5) {
-          input = 23.5;
+        } else if (input > 72) {
+          input = 72;
         }
         return input;
       },
@@ -118,11 +118,17 @@ CarCalc.Models.Trip = Backbone.Model.extend({
     return obj;
   },
 
-  setMinimumTime: function(obj){
-    if (CarCalc.Util.hasKey(obj, ["hours", "days"])) {
-      if (obj.days == 0 && obj.hours == 0) {
-        obj.hours = 0.5;
-      }
+  timeInDays: function(obj){
+    var days = 0;
+    days = days + obj.days;
+    days = days + (obj.hours / 24);
+    return days;
+  },
+
+  setMaximumTime: function(obj){
+    if (this.timeInDays(obj) > 14) {
+      obj.hours = 0;
+      obj.days = 14;
     }
     return obj;
   },
@@ -133,7 +139,7 @@ CarCalc.Models.Trip = Backbone.Model.extend({
       obj = this.floatify(obj);
       obj = this.nanToZero(obj);
       obj = this.normalize(obj);
-      obj = this.setMinimumTime(obj);
+      obj = this.setMaximumTime(obj);
     }
     this.set(obj);
   }
