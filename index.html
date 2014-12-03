@@ -9,19 +9,22 @@
   <body>
     <div id="carcalc-container"></div>
     <script type="text/template" id="carcalc-input-template">
-      <label for="carcalc-input-hours">
-        <input type="number" min="0" max="23.5" step="0.5" id="carcalc-input-hours" value="<%= hours %>"/>
-        Timmar
-      </label>
       <label for="carcalc-input-days">
         <input type="number" min="0" max="14" step="1" id="carcalc-input-days" value="<%= days %>" />
         Dagar
+      </label>
+      <label for="carcalc-input-hours">
+        <input type="number" min="0" max="23.5" step="0.5" id="carcalc-input-hours" value="<%= hours %>"/>
+        Timmar
       </label>
       <label for="carcalc-input-distance">
         <input type="number" min="0" max="10000" step="1" id="carcalc-input-distance" value="<%= distance %>" />
         Kilometer
       </label>
       <input type="submit" id="carcalc-calculate" value="Räkna ut" />
+      <div class="clear pad instructions">
+        Längsta bokning är 14 dagar och längsta sträcka är 10000 km. Kalkylatorn kommer minska dina värden om du matar in större än så.
+      </div>
     </script>
     <script type="text/template" id="carcalc-output-rate-table-header">
       <thead>
