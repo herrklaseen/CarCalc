@@ -37,7 +37,17 @@
   width: 3em;
   border: 1px solid #9b9b9b;
 }
-#carcalc-input-distance {
+#carcalc-input-container .clear {
+  clear: both;
+}
+#carcalc-input-container .pad {
+  padding-top: 1em;
+}
+#carcalc-input-container .instructions {
+  font-size: 85%;
+  line-height: 1.2em;
+}
+#carcalc-input-container #carcalc-input-distance {
   width: 4.5em;
 }
 #carcalc-calculate, #carcalc-input-container input[type="number"] {
