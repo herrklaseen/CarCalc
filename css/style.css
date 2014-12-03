@@ -9,6 +9,7 @@
 
 #carcalc-container {
   width: 600px;
+  margin-bottom: 1em;
   border: 2px solid #A0D9E5;
   border-radius: 5px;
   font-family: sans-serif;
