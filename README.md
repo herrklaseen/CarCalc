@@ -4,4 +4,4 @@ A price calculator for a car sharing club I am a member of. The previous calcula
 
 Hopefully this is a more portable/maintainable solution for such a simple application.
 
-![Screenshot of app](https://github.com/herrklaseen/CarCalc/blob/master/CarCalc-screenshot-2014-10-24.png?raw=true "Screenshot of app")
+![Screenshot of app](https://github.com/herrklaseen/CarCalc/blob/master/CarCalc-screenshot.png?raw=true "Screenshot of app")
