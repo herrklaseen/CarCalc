@@ -3,15 +3,13 @@ CarCalc.Models.Rate = Backbone.Model.extend({
 
   bookingFee: CarCalc.Data.bookingFee,
 
+  excessReduction: CarCalc.Data.excessReduction,
+
   calculateCost : function(trip, options) {
     var timeCost = this.calculateTimeCost(trip);
     var distanceCost = this.calculateDistanceCost(trip);
 
-    if (options.addVAT) {
-      return this.withVAT(distanceCost + timeCost + this.bookingFee);
-    } else {
-      return (distanceCost + timeCost + this.bookingFee);
-    }
+    return (distanceCost + timeCost + this.bookingFee);
   },
 
   calculateTimeCost: function(trip){
@@ -20,13 +18,20 @@ CarCalc.Models.Rate = Backbone.Model.extend({
 
     if (combinedTime >= 1) {
       timeCost = this.get("daily") * combinedTime;
+      timeCost += this.excessReduction.daily;
     } else {
       timeCost = this.get("hourly") * (combinedTime * 24);
-      if (timeCost > this.get("daily")) {
-        timeCost = this.get("daily");
+      timeCost += this.excessReduction.hourly * (combinedTime * 24);
+      if (timeCost > this.getMaximumDailyRate()) {
+        timeCost = this.getMaximumDailyRate();
       }
     }
+    console.log(this.get("title") + ": " + timeCost);
     return timeCost;
+  },
+
+  getMaximumDailyRate: function() {
+    return this.get("daily") + this.excessReduction.daily;
   },
 
   calculateDistanceCost: function(trip){
