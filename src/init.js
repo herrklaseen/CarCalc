@@ -61,6 +61,14 @@
 
   CarCalc.Data.bookingFee = 24.0;
 
+  // This is the cost of "Självriskreducering" excluding VAT.
+  // It will be added automatically to all rates, as it is not 
+  // optional in the current booking system.
+  CarCalc.Data.excessReduction = {
+    hourly: 0.8,
+    daily: 16.0
+  }; 
+
   CarCalc.Util.hasKey = function(obj, ary){
     return (_.find(_.keys(obj),
         function(key){
