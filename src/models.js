@@ -26,7 +26,6 @@ CarCalc.Models.Rate = Backbone.Model.extend({
         timeCost = this.getMaximumDailyRate();
       }
     }
-    console.log(this.get("title") + ": " + timeCost);
     return timeCost;
   },
 
