@@ -1,0 +1,27 @@
+{
+  "name": "carcalc",
+  "version": "0.4.0",
+  "description": "Web app to calculate cost of car use in car pool.",
+  "main": "init.js",
+  "dependencies": {
+    "lodash": "^4.2.1"
+  },
+  "devDependencies": {
+    "grunt": "^0.4.5",
+    "grunt-contrib-concat": "^0.5.1",
+    "grunt-contrib-uglify": "^0.11.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/herrklaseen/CarCalc.git"
+  },
+  "author": "Henning Klasén",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/herrklaseen/CarCalc/issues"
+  },
+  "homepage": "https://github.com/herrklaseen/CarCalc#readme"
+}
