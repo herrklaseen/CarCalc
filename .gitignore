@@ -39,3 +39,8 @@ Thumbs.db
 # Vim #
 #######
 *.swp
+
+# Node modules #
+################
+
+node_modules/
